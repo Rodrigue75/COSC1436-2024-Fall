@@ -22,9 +22,46 @@ struct Movie
     bool IsClassic;
 
 };
+enum MenuCommand
+{
+    MC_AddMovie,
+    MC_EditMovie,
+    MC_DeleteMovie,
+    MC_ViewMovie,
 
 int main()
 {
+
+    // Show menu
+    cout << "Movie Library" << endl;
+    cout << "------------" << endl;
+    cout << "A)dd Movie" << endl;
+    cout << "E)dit Movie" << endl;
+    cout << "D)elete Movie" << endl;
+    cout << "V)iew Movie" << endl;
+
+    /// Get input
+    char input;
+    cin >> input;
+
+    int menuCommand
+    switch (input)
+    {
+        case 'A':
+        case 'a': menuComand = 1; break;
+
+        case 'E':
+        case 'e': menuCommand = 2; break;
+
+        case 'D':
+        case 'd':menuCommand = 3; break;
+
+        case 'V':
+        case 'v': menuCommand = 4; break;
+
+        default: cout << "Bad input" << endl; break;
+
+    
     // Relational demo
     // rel_op ::= < <= > == !=
     //rel_exp ::= E rel_op E (boolean)
@@ -131,7 +168,7 @@ int main()
         movie.IsClassic = false;
     else if (isClassic == 'n')
         movie.IsClassic = false;*/
-    if (isClassic == 'Y' || isClassic == 'y')
+   /* if (isClassic == 'Y' || isClassic == 'y')
         movie.IsClassic = true;
     else if (isClassic == 'N' || isClassic == 'n')
         movie.IsClassic = false;
@@ -143,19 +180,56 @@ int main()
 
         cout << "is this a classic (Y/N)?";
         cin >> isClassic;
-    };
+    };*/
 
+    //switch (select) statement - replacement for if-elseif where same expression compared to multiple values
+    // 1. Must compare a single expression to one or more constant values with equality
+    //2. switch expression must be an integral type
+    //3. Each case label must be a compile-time constant expression 
+    //4. Each case label must be unique
+    switch (isClassic)
+    {
+
+        case 'Y': movie.IsClassic = true; break;
+        case'y': movie.IsClassic = true; break;
+
+        case 'N':  movie.IsClassic = false; break;
+        case'n':  movie.IsClassic = false; break;
+
+        default:
+        {
+
+            cout << "ERROR: you must enter Y or N";
+
+            cout << "is this a classic (Y/N)?";
+            cin >> isClassic;
+        };
+    };
 
         //// Display movie details 
     cout << "----------------" << endl;
     cout << movie.Title << endl;
     cout << movie.Title << " (" << movie.ReleaseYear << ")" << endl;
     cout << "Run Lenght (mins) " << movie.Runlenght << endl;
-    if (movie.IsClassic)
-        cout << "Is Classic? Yes " << movie.IsClassic << endl;
 
+    // Long form - 1
+    //if (movie.IsClassic)
+    // cout << "Is Classic? Yes << endl;
+    // else
+    // cout << "Is Classic? No << endl;
+    //Better but longer form - 2
+    /*string classicIndicator;
+    * if (movie.IsClassic)
+    * classicIndicator = "Yes"
     else
-        cout << "Is Classic? No" << endl;
+        classicIndicator = "No"
+        cout << "Is Classic? " << classicIndicator << endl;*/
+
+    //Shorterst form using conditional operator => Eb ? Et :Ef
+    // Et & Ef = must be the exact same type, type coersion is not allowed
+    cout << " Is Classic? " << (movie.IsClassic ? "Yes" : "No") << endl;
+    
+
     if (movie.Description != "")
         cout << movie.Description << endl;
     cout << "-------------------" << endl;
