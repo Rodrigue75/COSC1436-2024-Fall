@@ -41,71 +41,37 @@ enum MenuCommand
 //};
 //TestEnum testValue = TestEnum::MC_AddMovie;//MC_AddMovie;//TestEnum::MC_AddMovie;
 
-int main()
+/// Displays main menu
+void DisplayMenu()
 {
-    //Relational demo
-    // rel_op ::= < <= > >= == !=
-    // rel_expr ::= E rel_op E (boolean)
-
-    ////int left, right;
-    //string left, right;
-    //std::cout << "Enter a left and right value: ";
-    //std::cin >> left >> right;
-
-    ////Mangle the values
-    //// Do not use == equality floating point values to avoid rounding errors
-    //// Except when comparing floating point value to an integral (e.g. f == 45)
-    ////left = (left * 21) / 21;
-    //right = (right * 15) / 15;*/
-    //
-    ////bool areEqual = left = right == 20;
-    ////bool areEqual = left = 20 = right;
-
-    ////String comparison for case insensitive
-    //// strcmpi(string, string) => int
-    ////    when using C++ strings specify value as `expr`.c_str()
-    ////    returns < 0 if left < right
-    ////            = 0 if left == right
-    ////            > 0 if left > right
-    //cout << left << " ciequal " << right << " = " << _strcmpi(left.c_str(), right.c_str()) << endl;
-    //cout << left << " == " << right << " = " << (left == right) << endl;
-    //cout << left << " < " << right << " = " << (left < right) << endl;
-    //cout << left << " <= " << right << " = " << (left <= right) << endl;
-    //cout << left << " > " << right << " = " << (left > right) << endl;
-    //cout << left << " >= " << right << " = " << (left >= right) << endl;    
-    //cout << left << " != " << right << " = " << (left != right) << endl;
-    //cout << endl;
-
-    ///Nested loop
-    /*int iterations = 0;
-    for (int i = 0; i < 100; ++i)
-
-    {
-    
-       for (int j = 0; j < 100; ++j)
-        {
-            ++iterations;
-            cout << i << "," << j << " = " << iterations << endl;
-            if (iterations % 100 == 0)
-            {
-                char choice;
-                cout << "Do you want to give up?";
-                cin >> choice;
-                if (choice == 'Y' || choice == 'y')
-                    break;
-            };
-        };
-    };
- 
-    cout << "Total iterations = " << iterations << endl;*/
-
-    //// Show menu
     cout << "Movie Library" << endl;
     cout << "---------------" << endl;
     cout << "A)dd Movie" << endl;
     cout << "E)dit Movie" << endl;
     cout << "D)elete Movie" << endl;
     cout << "V)iew Movie" << endl;
+}
+
+/// Handles the menu selection
+void HandleMenu()
+{
+    //HACK: Fix this
+    MenuCommand menuCommand = (MenuCommand)0;
+    switch (menuCommand)
+    {
+        case MenuCommand::AddMovie:
+        case MenuCommand::EditMovie:
+        case MenuCommand::DeleteMovie:
+        case MenuCommand::ViewMovie: cout << "Not implemented" << endl; break;
+    };
+}
+
+int main()
+{
+   
+
+     //Function call ::= id ();    
+    DisplayMenu();
 
     //While-stmt ::= while (Eb) S;
     //  Pretest, S executes zero or more times
@@ -115,7 +81,7 @@ int main()
     //bool done = false;
     //while (!done)
     //while (menuCommand == 0); infinite loop, don't do it
- do 
+    do
     {
         char input;
         cin >> input;
@@ -136,20 +102,21 @@ int main()
 
             default: cout << "Bad input" << endl; break;
         };
- } while (menuCommand == 0);
+    } while (menuCommand == 0);
     cin.ignore();
 
     //int shouldntWork = MenuCommand::MC_AddMovie;
     //menuCommand = (MenuCommand)100;
 
     //// Handle menu command
-    switch (menuCommand)
+    HandleMenu();
+   /* switch (menuCommand)
     {
         case MenuCommand::AddMovie:
         case MenuCommand::EditMovie:
         case MenuCommand::DeleteMovie:
         case MenuCommand::ViewMovie: cout << "Not implemented" << endl; break;
-    };
+    };*/
 
     ////// Add a new movie
     //Create a new movie
@@ -171,7 +138,7 @@ int main()
 
     //Get run length, at least 0, minutes
     movie.RunLength = -1;
-   do // while (movie.RunLength < 0 || movie.RunLength > 1440)
+    do // while (movie.RunLength < 0 || movie.RunLength > 1440)
     {
         cout << "Enter run length (in minutes): ";
         cin >> movie.RunLength;
@@ -197,9 +164,9 @@ int main()
         //};
         if (movie.RunLength < 0 || movie.RunLength > 1440)
             cout << "ERROR: Run length must be between 0 and 1440" << endl;
-   } while (movie.RunLength < 0 || movie.RunLength > 1440);
+    } while (movie.RunLength < 0 || movie.RunLength > 1440);
 
-    //Get release year, at least 1900
+     //Get release year, at least 1900
     while (movie.ReleaseYear < 1900 || movie.ReleaseYear > 2100)
     {
         cout << "Enter release year (1900+): ";
@@ -217,7 +184,7 @@ int main()
     //Get Is classic
     bool done = false;
     while (!done)
-       
+
     {
         char isClassic;
         cout << "Is this a classic (Y/N)? ";
@@ -283,8 +250,8 @@ int main()
 
     // for loop - designed to iterate a fixed number of times with a well known start and end
      // int genreIndex = 0;
-        for (int index = 0; index < 5; ++index) // = 0, < N (RARELY) =1, <= 1
-    
+    for (int index = 0; index < 5; ++index) // = 0, < N (RARELY) =1, <= 1
+
     {
         cout << "Enter optional genre: " << (index + 1) << ": ";
 
@@ -302,7 +269,7 @@ int main()
        // int someIndex = 0;
         //for (;;) {}; //Infinite loop
 
-      
+
 
     ///// Display movie details
     cout << "---------------" << endl;
