@@ -41,7 +41,7 @@ void displayProgramInfos() {
 }
 
 
-// Function to prompt and validate falling time input story2
+// Function to prompt and validate falling time input
 
 int getFallingTime() {
     int time;
@@ -49,35 +49,21 @@ int getFallingTime() {
     cin >> time;
 
     if (time >= 1 && time <= 60) {
-        cout << "You enterd a valid nuber of time: " << time << endl;
+        cout << "You enterd a valid number of time: " << time << endl;
     } else {
         cout << "Invalid input. Please enter a number between 1 and 60." << endl;
     }
     return time;
 }
 
-// Function to calculates the appropriate falling distance for a given time (second) story3
+// Function to calculates the appropriate falling distance for a given time (second) 
 
 double calculateFallingDistance(int seconds) {
     return 0.5 * GRAVITY * seconds * seconds;     // distance =  0.5 * g * t^2
 }
 
-// Function to display the falling distances for each second story4
 
-void displayFallingDistanceTable(int time, char unit) {
-    cout << "\nSeconds              Distance\n";
-    cout << "===============================\n";
-
-    for (int second = 1; second <= time; ++second) {
-        double distance = calculateFallingDistance(second); // Calculate the distance
-        cout << setw(2) << second << "       "
-            << fixed << setprecision(2) // 2 decimal places format
-            << distance << " m\n";      //Display distance in meters
-    }
-
-}
-
-// Function to get distance unit story5
+// Function to get distance unit 
 
 char getDistanceUnit() {
     char unit;
@@ -99,7 +85,7 @@ double convertToFeet(double meters) {
     return meters * METERS_TO_FEET;
 }
  
-// Function to display the falling distance table story6
+// Function to display the falling distance table
 
 void displayFallingDistanceTable(int time, char unit) {
     cout << "\nSeconds              Distance\n";
