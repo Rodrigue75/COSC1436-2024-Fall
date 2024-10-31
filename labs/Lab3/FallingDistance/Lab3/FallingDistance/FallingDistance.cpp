@@ -64,18 +64,18 @@ double calculateFallingDistance(int seconds) {
 
 // Function to display the falling distances for each second story4
 
-//void displayFallingDistanceTable(int time, char unit) {
-//    cout << "\nSeconds              Distance\n";
-//    cout << "===============================\n";
-//
-//    for (int second = 1; second <= time; ++second) {
-//        double distance = calculateFallingDistance(second); // Calculate the distance
-//        cout << setw(2) << second << "       "
-//            << fixed << setprecision(2) // 2 decimal places format
-//            << distance << " m\n";      //Display distance in meters
-//    }
-//
-//}
+void displayFallingDistanceTable(int time, char unit) {
+    cout << "\nSeconds              Distance\n";
+    cout << "===============================\n";
+
+    for (int second = 1; second <= time; ++second) {
+        double distance = calculateFallingDistance(second); // Calculate the distance
+        cout << setw(2) << second << "       "
+            << fixed << setprecision(2) // 2 decimal places format
+            << distance << " m\n";      //Display distance in meters
+    }
+
+}
 
 // Function to get distance unit story5
 
