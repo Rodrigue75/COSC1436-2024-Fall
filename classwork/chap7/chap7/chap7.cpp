@@ -132,6 +132,22 @@ bool AreArraysEqual(int left[], int leftsize,int right[], int rightsize )
     return true;
 };
 
+int CopyArray(int left[], int leftSize, int right[], int rightSize)
+{
+    int size = (leftSize < rightSize) ? leftSize : rightSize;
+    for (int index = 0; index < size; ++index)
+        left[index] = right[index];
+
+    return size;
+
+};
+
+void InitializeArray (int values[], int size, int initialValue)
+{
+    for (int index = 0; index < size; ++index)
+        values[index] = initialValue;
+}
+
 void UseArrayDemo()
 {
     int array1[20] = {0};
@@ -139,8 +155,8 @@ void UseArrayDemo()
    /* for (int index = 0; index < 20; ++index)
         array1[index] = index + 1;*/
 
-    for (int& value : array1)
-        value = 1;
+
+    InitializeArray(array1, 20, 2);
     /*int index2 = 0;
     while (index2 < 20)
         array1[index2++] = index2 + 1;*/
@@ -148,20 +164,82 @@ void UseArrayDemo()
     // For loop for iterating arrays
     //for (int index = 0; index < 20; ++index)
     //  std::cout << arrayindex1[index] << std::endl;
-        for (int value : array1)
-            std::cout << value << std::endl;
+    for (int value : array1)
+        std::cout << value << std::endl;
 
-        int array2[20] = {0};
-        int array3[20] = {0};
-        // Compare arrays
-        std::cout << (array2 == array3)
-            << " " << AreArraysEqual(array2, 20, array3, 20)
-            << std::endl;
+    int array2[20] = {0};
+    int array3[20] = {0};
+    // array3[19] = 10;
+    // Compare arrays
+    std::cout << (array2 == array3)
+        << " " << AreArraysEqual(array2, 20, array3, 20)
+        << std::endl;
+
+    // Assignment
+    // array3 = array2;
+    CopyArray(array3, 20, array2, 20);
+
+    void DisplayArray(int values[], int size, int valueWidth, int maxCellsPerRow)
+    {
+
+        std::cout << std::left;
+
+        for (int index = 0; index < size; ++index)
+            std::cout << std::setw(valueWidth) << values[index] << " ";
+        //If we have printed out maxCellsPerRow values, then newline
+        if (index > 0 && index % maxCellsPerRow == 0)
+            std::cout << std::endl;
+    };
+
+    std::cout << std::right << std::endl;
+
 }
+
+//Multi-D table passed like single-D tables
+//
+void DisplayTable(int values[][10], int size)
+{
+    for (int row = 0; row < size; ++row);
+
+        /*for (int col = 0; col < 10; ++col)
+            ;*/
+}
+ void TableDemo()
+ {
+     //[rows][cols] - compile size for all dimensions
+     int multiplication[5][10] = {
+                                 {1, 2, 3, 4, 5}
+                                 ,{ 2, 4, 6, 8, 10 }
+     };
+
+     //Init values
+     //Row major ordering - rows are enumerated, then columns
+     for (int row = 0; row < 5; ++row)
+         for (int col = 0; col < 10; ++col)
+             multiplyTable[row][col] = (row + 1) * (col + 1);
+
+     //// Column major ordering - columns are enumerated, then rows
+     //for (int row = 0; row < 5; ++row)
+     //    for (int col = 0; col < 10; ++col)
+     //        multiplyTable[row][col] = (row + 1) * (col + 1);
+
+
+ //    //Display table
+ //    DisplayTable(multiplyTable, 5);
+ //    for (int row = 0; row < 5; ++row)
+ //    {
+ //        for (int col = 0; col < 10; ++col)
+ //            std::cout << std::setw(5) << multiplyTable[row][col];
+
+ //        std::cout << std::endl;
+ //    };
+ //}
+
+
 
 int main()
 {
-    UseArrayDemo();
+    TableDemo();
 }
 
 void NameArrayDemo()
