@@ -80,8 +80,7 @@ int findLargest(int array[], int index) {
 
 // Function to find the smallest value in the array
 int findSmallest(int array[], int index) {
-    if (index == 0) return 0;
-
+ 
     int smallest = array[0];
     for (int i = 1; i < index; i++) {
         if (array[i] < smallest) {
