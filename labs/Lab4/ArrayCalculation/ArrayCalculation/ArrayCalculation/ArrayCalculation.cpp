@@ -3,9 +3,6 @@
 
 using namespace std;
 
-// Constants
-const int MAX_NUMBERS = 100;
-
 // Function Declarations
 void displayProgramInfo();
 int getrUserNumbers(int array[], int maxSize);
@@ -72,9 +69,7 @@ char displayMainmenu() {
 
 // Function to find the largest value in the array
 int findLargest(int array[], int index) {
-    if (index) == 0) return 0;
-
-    int largest = array[0];
+   int largest = array[0];
     for (int i = 1; i < index; i++) {
         if (array[i] > largest) {
             largest = array[i];
