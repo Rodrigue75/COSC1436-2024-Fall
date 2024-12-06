@@ -23,7 +23,7 @@ char getUserChoice();
 void addValue(LinkedList& List);
 void listValues(const LinkedList& list);
 void deleteValue(LinkedList& list);
-void clearList(LinkedList& list);
+void clearlist(LinkedList& list);
 bool confirmAction(const string& message);
 
 // Main function
@@ -41,7 +41,7 @@ int main() {
             case 'A': addValue(list); break;
             case 'L': listValues(list); break;
             case 'D': deleteValue(list); break;
-            case 'C': clearList(list); break;
+            case 'C': clearlist(list); break;
             case 'Q': cout << "Exiting program. Goodbye!" << endl; break;
             default: cout << "Invalid option. Try again" << endl;
 
@@ -51,7 +51,7 @@ int main() {
 
 
     // Clean before exiting
-    clearList(list);
+    clearlist(list);
     return 0;
 
 }
@@ -77,6 +77,14 @@ void displayMenu() {
     cout << "? ";
 
 }
+
+// Function to get the user's choice
+char getUserChoice() {
+        char choice;
+        cin >> choice;
+        cin.ignore();
+        return toupper(choice);
+    }
 
 // Function to add a value to the linked list
 void addValue(LinkedList& list) {
@@ -178,5 +186,4 @@ bool confirmAction(const string& message) {
     cout << message;
     cin >> response;
     return tolower(response) == 'y';
-
 }
