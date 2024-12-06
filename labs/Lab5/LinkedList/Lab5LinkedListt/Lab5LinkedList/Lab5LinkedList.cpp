@@ -1,31 +1,26 @@
 #include <iostream>
-#include <cctype> // For tolower()
+#include <cctype>
 using namespace std;
 
-// File Header
-/*
-Lab 5: Linked List Implementation
-Author: [Your Name]
-Course: COSC 1436
-Semester: Fall 2024
-*/
 
-// Node structure for linked list
+// Node Structure for Linked list
 struct Node {
     int Value = 0;
     Node* Next = nullptr;
+
 };
 
-// LinkedList structure
+// Linked list structure
 struct LinkedList {
     Node* Head = nullptr;
+
 };
 
-// Function prototypes
+// Function Prototypes
 void displayProgramInfo();
 void displayMenu();
 char getUserChoice();
-void addValue(LinkedList& list);
+void addValue(LinkedList& List);
 void listValues(const LinkedList& list);
 void deleteValue(LinkedList& list);
 void clearList(LinkedList& list);
@@ -48,40 +43,39 @@ int main() {
             case 'D': deleteValue(list); break;
             case 'C': clearList(list); break;
             case 'Q': cout << "Exiting program. Goodbye!" << endl; break;
-            default: cout << "Invalid option. Try again." << endl;
+            default: cout << "Invalid option. Try again" << endl;
+
+
         }
     } while (choice != 'Q');
 
-    // Clean up before exiting
+
+    // Clean before exiting
     clearList(list);
     return 0;
+
 }
 
-// Function to display program information
+// Function to display program infos
 void displayProgramInfo() {
-    cout << "Lab 5: Linked List Implementation" << endl;
-    cout << "Author: [Your Name]" << endl;
+    cout << "Lab 5: Linked list Implementation" << endl;
+    cout << "Author: Rodrigue Edmond" << endl;
     cout << "Course: COSC 1436" << endl;
     cout << "Semester: Fall 2024" << endl << endl;
+
 }
 
 // Function to display the main menu
 void displayMenu() {
     cout << "\nMain Menu" << endl;
-    cout << "--------------------" << endl;
+    cout << "-------------------" << endl;
     cout << "L) ist" << endl;
     cout << "A) dd" << endl;
     cout << "D) elete" << endl;
     cout << "C) lear" << endl;
     cout << "Q) uit" << endl;
     cout << "? ";
-}
 
-// Function to get a valid menu choice from the user
-char getUserChoice() {
-    char choice;
-    cin >> choice;
-    return toupper(choice);
 }
 
 // Function to add a value to the linked list
@@ -99,11 +93,12 @@ void addValue(LinkedList& list) {
         Node* current = list.Head;
         while (current->Next != nullptr) {
             current = current->Next;
+
         }
-        current->Next = newNode;
     }
 
-    cout << "Value " << value << " added to the list." << endl;
+    cout << "Value" << value << " added to the list. " << endl;
+
 }
 
 // Function to list all values in the linked list
@@ -119,13 +114,15 @@ void listValues(const LinkedList& list) {
         cout << current->Value << endl;
         current = current->Next;
     }
+
 }
 
 // Function to delete a value from the linked list
 void deleteValue(LinkedList& list) {
     if (list.Head == nullptr) {
-        cout << "The list is empty. Nothing to delete." << endl;
+        cout << "The list is empty. Nothing to delete. " << endl;
         return;
+
     }
 
     int value;
@@ -138,26 +135,29 @@ void deleteValue(LinkedList& list) {
     while (current != nullptr) {
         if (current->Value == value) {
             if (previous == nullptr) {
-                // Removing the head
                 list.Head = current->Next;
             } else {
                 previous->Next = current->Next;
+
             }
             delete current;
-            cout << "Value " << value << " removed from the list." << endl;
+            cout << "Value" << value << " removed from the list. " << endl;
             return;
+
         }
         previous = current;
         current = current->Next;
     }
 
-    cout << "Value " << value << " not found in the list." << endl;
+    cout << "Value " << value << "not found in the list. " << endl;
+
 }
 
 // Function to clear the entire linked list
-void clearList(LinkedList& list) {
+void clearlist(LinkedList& list) {
     if (!confirmAction("Are you sure you want to clear the list? (y/n): ")) {
         return;
+
     }
 
     Node* current = list.Head;
@@ -169,12 +169,14 @@ void clearList(LinkedList& list) {
     list.Head = nullptr;
 
     cout << "The list has been cleared." << endl;
+
 }
 
-// Function to confirm an action
+// Function to confirm an action 
 bool confirmAction(const string& message) {
     char response;
     cout << message;
     cin >> response;
     return tolower(response) == 'y';
+
 }
